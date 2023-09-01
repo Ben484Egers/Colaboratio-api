@@ -18,7 +18,8 @@ return new class extends Migration
             $table->date('deadline')->nullable();
             $table->foreignId('user_id');
             $table->boolean('completed');
-            $table->timestamps('created_at');
+            // $table->date('created_at');
+            // $table->date('updated_at');
         });
     }
 

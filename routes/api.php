@@ -1,5 +1,10 @@
 <?php
 
+// header('Access-Control-Allow-Origin: http://localhost:3000');
+// header('Access-Control-Allow-Methods : POST, GET, OPTIONS, PUT, DELETE, HEAD');
+// header('Allow: POST, GET, OPTIONS, PUT, DELETE, HEAD');
+// header('Access-Control-Allow-Headers : X-Requested-With, Content-Type');
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
@@ -23,21 +28,30 @@ use Illuminate\Support\Facades\Route;
 // Public routes
 
 //Register User
-Route::post('/users', [AuthController::class, 'store']);
+Route::post('/users/register', [AuthController::class, 'store']);
+
 
 //Login/ Authenticate User
 Route::post('/users/authenticate', [AuthController::class, 'authenticate'])->name('login');
 
 
+
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     
-    //Project routes
-
+    Route::get('/users/check', [AuthController::class, 'check']);
+    
     //User routes
     //Get all users
     Route::get('/users', [UserController::class, 'index']);
 
+    //Get one user
+    Route::get('/users/{id}', [UserController::class, 'show']);
+
+    //Get info loggedin user
+    Route::get('/user/info', [AuthController::class, 'info']);
+    
+    //Project routes
     //Show all projects.
     Route::get('/projects', [ProjectController::class, 'index']);
 
@@ -57,11 +71,17 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //Get all tasks of signed in user
     Route::get('/tasks', [TaskController::class, 'index']);
 
+    //Get all tasks
+    Route::get('/tasks/all', [TaskController::class, 'all']);
+
     //Create new task
     Route::post('/tasks', [TaskController::class, 'store']);
 
     //Get single task
     Route::get('/tasks/{id}', [TaskController::class, 'show']);
+
+    //Get all tasks of project
+    Route::get('/project/{id}/tasks', [TaskController::class, 'projectTasks']);
 
     //Update task
     Route::put('/tasks/{id}', [TaskController::class, 'update']);

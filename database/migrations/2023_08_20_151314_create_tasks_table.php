@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('assigned_by_id');
             $table->foreignId('project_id')->constrained()->onDelete('cascade');
             $table->boolean('completed');
-            $table->timestamps('created_at');
+            // $table->timestamps('created_at');
         });
     }
 

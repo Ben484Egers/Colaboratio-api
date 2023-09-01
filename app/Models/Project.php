@@ -9,6 +9,7 @@ class Project extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $fillable = ['name', 'description', 'deadline', 'user_id', 'completed'];
 
     // Relationship To Project Manager

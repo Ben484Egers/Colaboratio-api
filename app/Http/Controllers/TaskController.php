@@ -11,9 +11,22 @@ class TaskController extends Controller
 {
     // Show all tasks of a user
     public function index() {
-
+        
         $tasks = Task::where('user_id', Auth::id())->get();
         return $tasks;
+    }
+    //Show all tasks
+    public function all() {
+        return Task::all();
+    }
+
+    /**
+     * Show all tasks of the requested project.
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function projectTasks($id) {
+        return Task::where('project_id', $id)->get();
     }
 
     //Create task
@@ -84,7 +97,7 @@ class TaskController extends Controller
      */
     public function search($term)
     {
-        $tasks = Task::where('user_id', Auth::id())->where('name', 'like', '%'.$term.'%')->orWhere('description', 'like', '%'.$term.'%')->get();
+        $tasks = Task::where('name', 'like', '%'.$term.'%')->orWhere('description', 'like', '%'.$term.'%')->get();
                 
         return $tasks;
     }

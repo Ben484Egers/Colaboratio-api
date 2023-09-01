@@ -9,6 +9,7 @@ class Task extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $fillable = ['name', 'description', 'deadline', 'user_id', 'assigned_by_id', 'project_id', 'completed'];
 
     // Relationship To User

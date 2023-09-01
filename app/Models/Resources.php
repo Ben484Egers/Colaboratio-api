@@ -9,6 +9,7 @@ class Resources extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $fillable = ['url', 'project_id'];
 
     // Relationship To Project
