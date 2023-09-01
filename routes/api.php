@@ -29,6 +29,9 @@ use Illuminate\Support\Facades\Route;
 
 //Register User
 Route::post('/users/register', [AuthController::class, 'store']);
+Route::get('/hello', function () {
+    return 'Hello world';
+});
 
 
 //Login/ Authenticate User
