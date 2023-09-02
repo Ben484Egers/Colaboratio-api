@@ -6,12 +6,10 @@
 // header('Access-Control-Allow-Headers : X-Requested-With, Content-Type');
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ResourcesController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 //Register User
 Route::post('/users/register', [AuthController::class, 'store']);
+
 Route::get('/hello', function () {
     return 'Hello world';
 });
