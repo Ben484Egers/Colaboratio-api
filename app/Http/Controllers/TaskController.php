@@ -66,7 +66,7 @@ class TaskController extends Controller
         $task = Task::find($id);
 
         //If logged in user is not person responsible or owner of task, Abort.
-        if($task->user_id != Auth::id() || $task->assigned_by_id != Auth::id()){
+        if($task->user_id != Auth::id() && $task->assigned_by_id != Auth::id()){
             return abort(403, 'Unauthorized Action');
         }
 
