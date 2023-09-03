@@ -24,7 +24,8 @@ class ProjectController extends Controller
             'completed' => 'required'
         ]);
 
-        return Project::create($request->all());
+        $project = Project::create($request->all());
+        return $project;
     }
 
     /**
