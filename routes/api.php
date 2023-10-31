@@ -1,9 +1,9 @@
 <?php
 
-// header('Access-Control-Allow-Origin: http://localhost:3000');
-// header('Access-Control-Allow-Methods : POST, GET, OPTIONS, PUT, DELETE, HEAD');
-// header('Allow: POST, GET, OPTIONS, PUT, DELETE, HEAD');
-// header('Access-Control-Allow-Headers : X-Requested-With, Content-Type');
+header('Access-Control-Allow-Origin: https://collaboratio.vercel.app');
+header('Access-Control-Allow-Methods : POST, GET, OPTIONS, PUT, DELETE, HEAD');
+header('Allow: POST, GET, OPTIONS, PUT, DELETE, HEAD');
+header('Access-Control-Allow-Headers : X-Requested-With, Content-Type');
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
